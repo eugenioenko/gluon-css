@@ -1,0 +1,80 @@
+/*
+    Gluon follows the following scheme for creating minimalistic classes
+    [property]-[modifer]-([breakpoint])-[value]
+
+    property: margin, padding, text,
+    modifier: left, right, bottom, center, top, etc...
+    breakpoint*: optional, the shorthand name of the media breakpoint (xs, sm, md)
+    value: the value set on the css property. (auto, 5, 10, left, etc...)
+    separator: (-) the separator can be set individually
+
+
+*/
+// namespace, use this to prefix all the properties. Example: 'g-'
+$gluon: '';
+
+$separator-modifier: '-';
+$separator-breakpoint: '-';
+$separator-value: '-';
+
+$media-max-xs: 599px;
+$media-min-sm: 600px;
+$media-max-sm: 959px;
+$media-min-md: 960px;
+$media-max-md: 1279px;
+$media-min-lg: 1280px;
+$media-max-lg: 1919px;
+$media-min-xl: 1920px;
+
+$medias : (
+   'xs': (
+        min: null,
+        max: $media-max-xs,
+    ),
+    'sm': (
+        min: $media-min-sm,
+        max: $media-max-sm,
+    ),
+    'md': (
+        min: $media-min-md,
+        max: $media-max-md,
+    ),
+    'lg': (
+        min: $media-min-lg,
+        max: $media-max-lg,
+    ),
+    'xl': (
+        min: $media-min-xl,
+        max: null,
+    )
+);
+
+$distance-sizes: (
+    '0': 0,
+    '5': 5px,
+    '10': 10px,
+    '20': 20px,
+    '40': 40px,
+    'auto': auto
+);
+
+$dirrections: ['top', 'right', 'bottom', 'left'];
+
+$size-properties: (
+    'p': ['padding'],
+    'pt': ['padding-top'],
+    'pr': ['padding-right'],
+    'pb': ['padding-bottom'],
+    'pl': ['padding-left'],
+    'py': ['padding-top', 'padding-bottom'],
+    'px': ['padding-left', 'padding-right'],
+    'm': ['margin'],
+    'mt': ['margin-top'],
+    'mr': ['margin-right'],
+    'mb': ['margin-bottom'],
+    'ml': ['margin-left'],
+    'my': ['margin-top', 'margin-bottom'],
+    'mx': ['margin-left', 'margin-right'],
+);
+
+$alignments: ['left', 'center', 'right'];

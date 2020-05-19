@@ -1,0 +1,34 @@
+@use 'sass:map';
+@import "variables";
+
+
+@mixin property-generator($mediashort) {
+    @each $shorthand, $properties in $size-properties {
+        @each $sizename, $size in $distance-sizes {
+            .#{$gluon}#{$shorthand}#{$mediashort}#{$separator-modifier}#{$sizename} {
+                @each $property in $properties {
+                    #{$property}: #{$size};
+                }
+            }
+        }
+    }
+}
+
+@include property-generator('');
+
+@each $mediashort, $media in $medias {
+    @if (map.get($media, 'min') == null) {
+        @media (max-width: #{map.get($media, 'max')}) {
+            @include property-generator($separator-breakpoint + $mediashort);
+        }
+    } @else if (map.get($media, 'max') == null) {
+        @media (min-width: #{map.get($media, 'min')}) {
+            @include property-generator($separator-breakpoint + $mediashort);
+        }
+    } @else {
+        @media (min-width: #{map.get($media, 'min')}) and (max-width: #{map.get($media, 'max')}) {
+            @include property-generator($separator-breakpoint + $mediashort);
+        }
+    }
+
+}

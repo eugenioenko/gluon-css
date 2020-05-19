@@ -1,0 +1,23 @@
+{
+  "name": "gluon-css",
+  "version": "1.0.0",
+  "description": "tiny and versatil atomic css classes collection generator",
+  "main": "index.js",
+  "scripts": {
+    "start": "sass scss/gluon.scss css/gluon.css --watch",
+    "build": "sass scss/gluon.scss css/gluon.min.css --style compressed",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "gluon",
+    "css",
+    "atomic",
+    "scss",
+    "library"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "sass": "^1.26.5"
+  }
+}
