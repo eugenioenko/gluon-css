@@ -2,10 +2,10 @@
 @import "variables";
 
 
-@mixin property-generator($mediashort) {
-    @each $shorthand, $properties in $size-properties {
-        @each $sizename, $size in $distance-sizes {
-            .#{$gluon}#{$shorthand}#{$mediashort}#{$separator-modifier}#{$sizename} {
+@mixin box-property-generator($mediashort) {
+    @each $shorthand, $properties in $box-model-properties {
+        @each $sizename, $size in $distance-values {
+            .#{$gluon}#{$shorthand}#{$mediashort}#{$separator}#{$sizename} {
                 @each $property in $properties {
                     #{$property}: #{$size};
                 }
@@ -14,20 +14,23 @@
     }
 }
 
-@include property-generator('');
+@mixin text-align-generator($mediashort) {
+}
+
+@include box-property-generator('');
 
 @each $mediashort, $media in $medias {
     @if (map.get($media, 'min') == null) {
         @media (max-width: #{map.get($media, 'max')}) {
-            @include property-generator($separator-breakpoint + $mediashort);
+            @include box-property-generator($separator + $mediashort);
         }
     } @else if (map.get($media, 'max') == null) {
         @media (min-width: #{map.get($media, 'min')}) {
-            @include property-generator($separator-breakpoint + $mediashort);
+            @include box-property-generator($separator + $mediashort);
         }
     } @else {
         @media (min-width: #{map.get($media, 'min')}) and (max-width: #{map.get($media, 'max')}) {
-            @include property-generator($separator-breakpoint + $mediashort);
+            @include box-property-generator($separator + $mediashort);
         }
     }
 

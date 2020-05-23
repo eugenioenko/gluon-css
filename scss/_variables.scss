@@ -1,6 +1,6 @@
 /*
     Gluon follows the following scheme for creating minimalistic classes
-    [property]-[modifer]-([breakpoint])-[value]
+    [property+modifier]-[breakpoint]*-[value]
 
     property: margin, padding, text,
     modifier: left, right, bottom, center, top, etc...
@@ -12,44 +12,35 @@
 */
 // namespace, use this to prefix all the properties. Example: 'g-'
 $gluon: '';
-
-$separator-modifier: '-';
-$separator-breakpoint: '-';
-$separator-value: '-';
-
-$media-max-xs: 599px;
-$media-min-sm: 600px;
-$media-max-sm: 959px;
-$media-min-md: 960px;
-$media-max-md: 1279px;
-$media-min-lg: 1280px;
-$media-max-lg: 1919px;
-$media-min-xl: 1920px;
+// separator is used to separate modifiers fro
+$separator: '-';
 
 $medias : (
-   'xs': (
-        min: null,
-        max: $media-max-xs,
-    ),
-    'sm': (
-        min: $media-min-sm,
-        max: $media-max-sm,
-    ),
-    'md': (
-        min: $media-min-md,
-        max: $media-max-md,
-    ),
-    'lg': (
-        min: $media-min-lg,
-        max: $media-max-lg,
-    ),
-    'xl': (
-        min: $media-min-xl,
-        max: null,
-    )
+   'xs': (min: null,   max: 599px),
+   'sm': (min: 600px,  max: 959px),
+   'md': (min: 960px,  max: 1279px),
+   'lg': (min: 1280px, max: 1919px),
+   'xl': (min: 1920px, max: null)
 );
 
-$distance-sizes: (
+$box-model-properties: (
+    'p': [padding],
+    'pt': [padding-top],
+    'pr': [padding-right],
+    'pb': [padding-bottom],
+    'pl': [padding-left],
+    'py': [padding-top, padding-bottom],
+    'px': [padding-left, padding-right],
+    'm': [margin],
+    'mt': [margin-top],
+    'mr': [margin-right],
+    'mb': [margin-bottom],
+    'ml': [margin-left],
+    'my': [margin-top, margin-bottom],
+    'mx': [margin-left, margin-right],
+);
+
+$distance-values: (
     '0': 0,
     '5': 5px,
     '10': 10px,
@@ -58,23 +49,11 @@ $distance-sizes: (
     'auto': auto
 );
 
-$dirrections: ['top', 'right', 'bottom', 'left'];
+$alignment-values: [left, center, right];
+$dirrection-modifiers: [top, right, bottom, left];
 
-$size-properties: (
-    'p': ['padding'],
-    'pt': ['padding-top'],
-    'pr': ['padding-right'],
-    'pb': ['padding-bottom'],
-    'pl': ['padding-left'],
-    'py': ['padding-top', 'padding-bottom'],
-    'px': ['padding-left', 'padding-right'],
-    'm': ['margin'],
-    'mt': ['margin-top'],
-    'mr': ['margin-right'],
-    'mb': ['margin-bottom'],
-    'ml': ['margin-left'],
-    'my': ['margin-top', 'margin-bottom'],
-    'mx': ['margin-left', 'margin-right'],
-);
+$text-short: 'text';
+$position-short: 'pos';
+$cursor-short: 'c';
 
-$alignments: ['left', 'center', 'right'];
+
